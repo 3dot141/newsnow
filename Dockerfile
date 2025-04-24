@@ -2,10 +2,8 @@ FROM node:20.12.2-alpine as builder
 WORKDIR /usr/src
 COPY . .
 
-ENV HTTPS_PROXY=http://172.17.0.1:7890
-ENV HTTP_PROXY=http://172.17.0.1:7890
+RUN npm install -g pnpm
 
-RUN corepack enable
 RUN pnpm install
 RUN pnpm run build
 
